@@ -42,33 +42,20 @@
   var runner = Runner.create();
   Runner.run(runner, engine);
 
+  const options = {
+    isStatic: true,
+    render: {
+      visible: false,
+    },
+  };
+
   // add bodies
   Composite.add(world, [
     // walls
-    Bodies.rectangle(400, 0, window.innerWidth + 500, 50, {
-      isStatic: true,
-      render: {
-        visible: false,
-      },
-    }),
-    Bodies.rectangle(400, 600, window.innerWidth + 500, 50, {
-      isStatic: true,
-      render: {
-        visible: false,
-      },
-    }),
-    Bodies.rectangle(window.innerWidth, 300, 50, 600, {
-      isStatic: true,
-      render: {
-        visible: false,
-      },
-    }),
-    Bodies.rectangle(0, 300, 50, 600, {
-      isStatic: true,
-      render: {
-        visible: false,
-      },
-    }),
+    Bodies.rectangle(400, 0, window.innerWidth * 2, 50, options),
+    Bodies.rectangle(400, 600, window.innerWidth * 2, 50, options),
+    Bodies.rectangle(window.innerWidth, 300, 50, 600, options),
+    Bodies.rectangle(0, 300, 50, 600, options),
   ]);
 
   const IMG_SIZE = 512 / 2;
@@ -83,11 +70,10 @@
     function (x: number, y: number) {
       const size = Common.random(20, 50);
       const scale = size / IMG_SIZE;
-      console.log(scale);
       return Bodies.circle(x, y, size, {
         render: {
           sprite: {
-            texture: "./yawn.png",
+            texture: "./awake.png",
             xScale: scale,
             yScale: scale,
           },
@@ -106,7 +92,7 @@
       if (body.isSleeping) {
         body.render.sprite.texture = "./sleeping.png";
       } else {
-        body.render.sprite.texture = "./yawn.png";
+        body.render.sprite.texture = "./awake.png";
       }
     });
   }
@@ -131,12 +117,13 @@
   // fit the render viewport to the scene
   Render.lookAt(render, {
     min: { x: 0, y: 0 },
-    max: { x: window.innerWidth, y: 600 },
+    max: { x: window.innerWidth - 100, y: 600 },
   });
 </script>
 <style>
   .top-canvas {
     position: relative;
+    overflow: hidden;
   }
   .top-canvas h1 {
     font-size: 5rem;
