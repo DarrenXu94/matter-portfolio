@@ -71,78 +71,45 @@
     }),
   ]);
 
+  const IMG_SIZE = 512 / 2;
+
   var stack = Composites.stack(
+    window.innerWidth / 3 - 100,
     50,
-    50,
-    18,
-    3,
+    10,
+    4,
     0,
     0,
     function (x: number, y: number) {
-      switch (Math.round(Common.random(0, 1))) {
-        case 0:
-          if (Common.random() < 0.8) {
-            return Bodies.rectangle(
-              x,
-              y,
-              Common.random(20, 50),
-              Common.random(20, 50),
-              {
-                render: {
-                  strokeStyle: "#ffffff",
-
-                  sprite: {
-                    texture: "./test.png",
-                  },
-                },
-              }
-            );
-          } else {
-            return Bodies.rectangle(
-              x,
-              y,
-              Common.random(80, 120),
-              Common.random(20, 30),
-              {
-                render: {
-                  strokeStyle: "#ffffff",
-
-                  sprite: {
-                    texture: "./test.png",
-                  },
-                },
-              }
-            );
-          }
-        case 1:
-          return Bodies.polygon(
-            x,
-            y,
-            Math.round(Common.random(1, 8)),
-            Common.random(20, 50),
-            {
-              render: {
-                sprite: {
-                  texture: "./test.png",
-                },
-              },
-            }
-          );
-      }
+      const size = Common.random(20, 50);
+      const scale = size / IMG_SIZE;
+      console.log(scale);
+      return Bodies.circle(x, y, size, {
+        render: {
+          sprite: {
+            texture: "./yawn.png",
+            xScale: scale,
+            yScale: scale,
+          },
+        },
+      });
     }
   );
 
   Composite.add(world, stack);
 
-  /*
-    // sleep events
-    for (var i = 0; i < stack.bodies.length; i++) {
-        Events.on(stack.bodies[i], 'sleepStart sleepEnd', function(event) {
-            var body = this;
-            console.log('body id', body.id, 'sleeping:', body.isSleeping);
-        });
-    }
-    */
+  // sleep events
+  for (var i = 0; i < stack.bodies.length; i++) {
+    Events.on(stack.bodies[i], "sleepStart sleepEnd", function (event: any) {
+      var body = this;
+
+      if (body.isSleeping) {
+        body.render.sprite.texture = "./sleeping.png";
+      } else {
+        body.render.sprite.texture = "./yawn.png";
+      }
+    });
+  }
 
   // add mouse control
   var mouse = Mouse.create(render.canvas),
