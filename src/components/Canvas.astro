@@ -1,7 +1,14 @@
 <div class="top-canvas">
   <div id="canvas"></div>
 
-  <h1>Darren Xu</h1>
+  <h1
+    data-aos="fade-up"
+    data-aos-delay="200"
+    data-aos-duration="500"
+    data-aos-anchor-placement="top-bottom"
+  >
+    Darren Xu
+  </h1>
 </div>
 
 <script>
@@ -52,10 +59,10 @@
   // add bodies
   Composite.add(world, [
     // walls
-    Bodies.rectangle(400, 0, window.innerWidth * 2, 50, options),
-    Bodies.rectangle(400, 600, window.innerWidth * 2, 50, options),
-    Bodies.rectangle(window.innerWidth, 300, 50, 600, options),
-    Bodies.rectangle(0, 300, 50, 600, options),
+    Bodies.rectangle(400, 0, window.innerWidth * 2, 50, options), // top
+    Bodies.rectangle(400, 600, window.innerWidth * 2, 50, options), // bottom
+    Bodies.rectangle(window.innerWidth, 300, 50, 600, options), // right wall
+    Bodies.rectangle(0, 300, 50, 600, options), // left wall
   ]);
 
   const IMG_SIZE = 512 / 2;
@@ -117,7 +124,7 @@
   // fit the render viewport to the scene
   Render.lookAt(render, {
     min: { x: 0, y: 0 },
-    max: { x: window.innerWidth - 100, y: 600 },
+    max: { x: window.innerWidth, y: 600 },
   });
 </script>
 <style>
@@ -132,5 +139,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    pointer-events: none;
   }
 </style>
