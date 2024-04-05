@@ -1,0 +1,232 @@
+---
+const work = [
+  {
+    company: "Pragma Partners",
+    position: "Managing consultant",
+    dates: "2021 - Present",
+    technologies: [
+      "Vue",
+      "Typescript",
+      "Component libraries",
+      "Design systems",
+      "HTML & SCSS",
+      "Azure pipelines",
+      "CI/CD",
+      ".Net Core",
+      "SQL Server",
+    ],
+  },
+  {
+    company: "MTP Services",
+    position: "Fullstack developer",
+    dates: "2019 - 2021",
+    technologies: [
+      "Vue",
+      "React",
+      "Angular",
+      "Typescript",
+      ".Net Core",
+      "Sharepoint SPFX",
+      "SQL Server",
+      "NoSQL databases",
+    ],
+  },
+  {
+    company: "Accenture",
+    position: "Fullstack developer",
+    dates: "2018 - 2019",
+    technologies: [
+      "Javascript",
+      "React",
+      "NodeJS",
+      "Docker",
+      "Bash",
+      "Apache Nifi",
+    ],
+  },
+  {
+    company: "Department of Defence",
+    position: "Software developer",
+    dates: "2017 - 2018",
+    technologies: [
+      "Javascript",
+      "React",
+      "NodeJS",
+      "Bash",
+      "Apache Nifi",
+      "Elasticsearch",
+      "Python",
+      "Flask",
+      "Sysadmin",
+      "Android",
+      "MongoDB",
+    ],
+  },
+];
+---
+
+<section class="work">
+  <h2>Work</h2>
+  <!-- {
+    work.map((data, idx) => (
+      <div class="card">
+        <h3>{data.company}</h3>
+      </div>
+    ))
+  } -->
+
+  <div class="timeline-container">
+    <div class="container-fluid">
+      <div class="container">
+        {
+          work.map((data, idx) => (
+            <>
+              <div
+                class={`row align-items-center how-it-works ${idx % 2 !== 0 && "justify-content-end"}`}
+              >
+                {idx % 2 === 0 && (
+                  <div class="col-2 text-center bottom">
+                    <div class="circle">{idx}</div>
+                  </div>
+                )}
+
+                <div class="col-6">
+                  <h3>{data.company}</h3>
+                </div>
+
+                {idx % 2 !== 0 && (
+                  <div class="col-2 text-center full">
+                    <div class="circle">2</div>
+                  </div>
+                )}
+              </div>
+              {idx % 2 === 0 ? (
+                <div class="row timeline">
+                  <div class="col-2">
+                    <div class="corner top-right" />
+                  </div>
+                  <div class="col-8">
+                    <hr />
+                  </div>
+                  <div class="col-2">
+                    <div class="corner left-bottom" />
+                  </div>
+                </div>
+              ) : (
+                <div class="row timeline">
+                  <div class="col-2">
+                    <div class="corner right-bottom" />
+                  </div>
+                  <div class="col-8">
+                    <hr />
+                  </div>
+                  <div class="col-2">
+                    <div class="corner top-left" />
+                  </div>
+                </div>
+              )}
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .work {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .timeline-container {
+    position: relative;
+  }
+
+  $bg: white;
+
+  $color: var(--color-blue);
+
+  .circle {
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 50%;
+    background-color: $color;
+    color: $bg;
+    max-height: 50px;
+    z-index: 2;
+  }
+  .how-it-works.row {
+    display: flex;
+    .col-2 {
+      display: inline-flex;
+      align-self: stretch;
+      align-items: center;
+      justify-content: center;
+      &::after {
+        content: "";
+        position: absolute;
+        border-left: 3px solid $color;
+        z-index: 1;
+      }
+    }
+    .col-2.bottom {
+      &::after {
+        height: 50%;
+        left: 50%;
+        top: 50%;
+      }
+    }
+    .col-2.full {
+      &::after {
+        height: 100%;
+        left: calc(50% - 3px);
+      }
+    }
+    .col-2.top {
+      &::after {
+        height: 50%;
+        left: 50%;
+        top: 0;
+      }
+    }
+  }
+  .timeline {
+    div {
+      padding: 0;
+      height: 40px;
+    }
+    hr {
+      border-top: 3px solid $color;
+      margin: 0;
+      top: 17px;
+      position: relative;
+    }
+    .col-2 {
+      display: flex;
+      overflow: hidden;
+    }
+    .corner {
+      border: 3px solid $color;
+      width: 100%;
+      position: relative;
+      border-radius: 15px;
+    }
+    .top-right {
+      left: 50%;
+      top: -50%;
+    }
+    .left-bottom {
+      left: -50%;
+      top: calc(50% - 3px);
+    }
+    .top-left {
+      left: -50%;
+      top: -50%;
+    }
+    .right-bottom {
+      left: 50%;
+      top: calc(50% - 3px);
+    }
+  }
+</style>
