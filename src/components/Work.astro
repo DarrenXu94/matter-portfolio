@@ -86,17 +86,23 @@ const work = [
               >
                 {idx % 2 === 0 && (
                   <div class="col-2 text-center bottom">
-                    <div class="circle">{idx}</div>
+                    <div class="circle">
+                      <i class="fa fa-desktop" />
+                    </div>
                   </div>
                 )}
 
                 <div class="col-6">
                   <h3>{data.company}</h3>
+                  <p>{data.position}</p>
+                  <p>{data.dates}</p>
                 </div>
 
                 {idx % 2 !== 0 && (
                   <div class="col-2 text-center full">
-                    <div class="circle">2</div>
+                    <div class="circle">
+                      <i class="fa fa-desktop" />
+                    </div>
                   </div>
                 )}
               </div>
@@ -137,24 +143,25 @@ const work = [
   .work {
     max-width: 700px;
     margin: 0 auto;
+
+    padding-bottom: 400px;
   }
 
   .timeline-container {
     position: relative;
   }
 
-  $bg: white;
-
-  $color: var(--color-blue);
-
   .circle {
     font-weight: bold;
     padding: 15px 20px;
     border-radius: 50%;
-    background-color: $color;
-    color: $bg;
+    background-color: var(--color-blue);
+    color: white;
     max-height: 50px;
+    max-width: 50px;
     z-index: 2;
+    display: flex;
+    justify-content: center;
   }
   .how-it-works.row {
     display: flex;
@@ -166,15 +173,15 @@ const work = [
       &::after {
         content: "";
         position: absolute;
-        border-left: 3px solid $color;
+        border-left: 3px solid var(--color-blue);
         z-index: 1;
       }
     }
     .col-2.bottom {
       &::after {
-        height: 50%;
+        height: 100%;
         left: 50%;
-        top: 50%;
+        // top: 50%;
       }
     }
     .col-2.full {
@@ -197,7 +204,7 @@ const work = [
       height: 40px;
     }
     hr {
-      border-top: 3px solid $color;
+      border-top: 3px solid var(--color-blue);
       margin: 0;
       top: 17px;
       position: relative;
@@ -207,7 +214,7 @@ const work = [
       overflow: hidden;
     }
     .corner {
-      border: 3px solid $color;
+      border: 3px solid var(--color-blue);
       width: 100%;
       position: relative;
       border-radius: 15px;
