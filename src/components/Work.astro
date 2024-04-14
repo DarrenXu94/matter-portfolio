@@ -5,6 +5,7 @@ const work = [
   {
     company: "Pragma Partners",
     position: "Managing consultant",
+    link: "https://www.pragma.com.au/",
     dates: "2021 - Present",
     technologies: [
       "Vue",
@@ -22,6 +23,7 @@ const work = [
     company: "MTP Services",
     position: "Fullstack developer",
     dates: "2019 - 2021",
+    link: "https://www.mtpservices.com.au/",
     technologies: [
       "Vue",
       "React",
@@ -37,6 +39,7 @@ const work = [
     company: "Accenture",
     position: "Fullstack developer",
     dates: "2018 - 2019",
+    link: "https://www.accenture.com/au-en",
     technologies: [
       "Javascript",
       "React",
@@ -49,6 +52,7 @@ const work = [
   {
     company: "Department of Defence",
     position: "Software developer",
+    link: "https://www.defence.gov.au/",
     dates: "2017 - 2018",
     technologies: [
       "Javascript",
@@ -93,13 +97,14 @@ const work = [
                 class={`row align-items-center how-it-works ${idx % 2 !== 0 && "justify-content-end"}`}
               >
                 {idx % 2 === 0 && (
-                  <div
+                  <a
+                    href={data.link}
                     class={`col-2 text-center bottom ${!idx && "first-circle"}`}
                   >
                     <div class="circle">
                       <i class="fa fa-desktop" />
                     </div>
-                  </div>
+                  </a>
                 )}
 
                 <div class={`col-10 ${idx % 2 && "content-right"}`}>
