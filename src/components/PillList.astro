@@ -17,18 +17,53 @@ const { pills, end } = Astro.props;
   }
   .pill-button {
     border: none;
-    border-radius: 20px; /* Adjust the value to change the pill shape */
     background-color: var(
       --color-blue
     ); /* Change to desired background color */
-    color: white; /* Change to desired text color */
     padding: 10px 20px; /* Adjust padding to fit the text */
     cursor: pointer;
-    opacity: 0.75;
+    opacity: 0.99;
     font-size: 0.8rem;
-  }
+    position: relative;
+    display: block;
+    overflow: hidden;
+    text-decoration: none;
+    color: white;
+    > span {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
 
-  .pill-button:hover {
-    opacity: 1;
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      box-sizing: border-box;
+      transition: 0.5s ease-in-out;
+      z-index: -1;
+    }
+    &:before {
+      right: -50px;
+      border-right: 50px solid transparent;
+      border-bottom: 80px solid black;
+      transform: translateX(-100%);
+    }
+    &:after {
+      left: -50px;
+      border-left: 50px solid transparent;
+      border-top: 80px solid black;
+      transform: translateX(100%);
+    }
+
+    &:hover:before {
+      transform: translateX(-49%);
+    }
+    &:hover:after {
+      transform: translateX(49%);
+    }
   }
 </style>

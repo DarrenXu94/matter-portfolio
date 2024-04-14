@@ -53,9 +53,11 @@ body {
   font-weight: <weight>;
   font-style: normal;
 
-	background-color: #D0DDD7;
-
+	
+	--background-green: #D0DDD7;
+	
 	--color-blue: #3C6997;
+	background-color: var(--background-green);
 }
 
 h1 {
@@ -69,7 +71,12 @@ h2 {
 
 h3 {
 	font-size: 1.5em;
-	color: #3C6997;
+	color: var(--color-blue);
+
+}
+
+h4 {
+	font-size: 1.2em;
 
 }
 

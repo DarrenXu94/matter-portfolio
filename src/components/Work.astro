@@ -82,7 +82,13 @@ const work = [
       <div class="container">
         {
           work.map((data, idx) => (
-            <>
+            <div
+              data-aos="fade-up"
+              data-aos-delay="1000"
+              data-aos-duration="500"
+              data-aos-anchor-placement="top-center"
+              data-aos-once="true"
+            >
               <div
                 class={`row align-items-center how-it-works ${idx % 2 !== 0 && "justify-content-end"}`}
               >
@@ -97,9 +103,9 @@ const work = [
                 )}
 
                 <div class={`col-10 ${idx % 2 && "content-right"}`}>
-                  <h3>{data.company}</h3>
-                  <p>{data.position}</p>
-                  <p>{data.dates}</p>
+                  <h3 class="pb-3">{data.company}</h3>
+                  <h4>{data.position}</h4>
+                  <h4>{data.dates}</h4>
                   <PillList pills={data.technologies} end={idx % 2} />
                 </div>
 
@@ -136,7 +142,7 @@ const work = [
                   </div>
                 </div>
               )}
-            </>
+            </div>
           ))
         }
       </div>
@@ -167,6 +173,7 @@ const work = [
     z-index: 2;
     display: flex;
     justify-content: center;
+    cursor: pointer;
   }
   .how-it-works.row {
     display: flex;
